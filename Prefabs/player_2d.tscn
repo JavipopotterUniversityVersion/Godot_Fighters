@@ -16,10 +16,10 @@
 [ext_resource type="Script" path="res://Scripts/StateMachine/EntityStates/Pain_State.gd" id="12_lwq20"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qcs5"]
-size = Vector2(50.5208, 23.8333)
+size = Vector2(33.2604, 23.8333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7f6b"]
-size = Vector2(38.3333, 49)
+size = Vector2(30.4167, 51.4167)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3ruj"]
 size = Vector2(8.33332, 35.75)
@@ -286,7 +286,6 @@ state_machine = NodePath("SubBody/StateMachine")
 [node name="SubBody" type="CharacterBody2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubBody"]
-y_sort_enabled = true
 position = Vector2(-1, 0.333336)
 sprite_frames = ExtResource("2_0kiqy")
 animation = &"Idle"
@@ -325,7 +324,7 @@ _tag_data = ExtResource("10_crje6")
 _damage = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubBody/StateMachine/Punch/HitBox"]
-position = Vector2(36.3333, -26.6667)
+position = Vector2(27.7031, -26.6667)
 shape = SubResource("RectangleShape2D_0qcs5")
 disabled = true
 debug_color = Color(0.576816, 0.545906, 0.259479, 0.42)
@@ -340,7 +339,7 @@ _damage = 5
 _knock_back = 600
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubBody/StateMachine/Jump-Kick/HitBox"]
-position = Vector2(27.6667, -23.6667)
+position = Vector2(17.4583, -30.9583)
 shape = SubResource("RectangleShape2D_c7f6b")
 disabled = true
 debug_color = Color(0.854128, 0.360551, 0.208889, 0.42)
