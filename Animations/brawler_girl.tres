@@ -1,0 +1,137 @@
+[gd_resource type="SpriteFrames" load_steps=25 format=3 uid="uid://dc2d5ohn54nl"]
+
+[ext_resource type="Texture2D" uid="uid://h1aqw04uk0ce" path="res://Sprites/Brawler-Girl/Idle/idle1.png" id="1_a22lo"]
+[ext_resource type="Texture2D" uid="uid://1obmofy0fnx5" path="res://Sprites/Brawler-Girl/Jump/jump3.png" id="1_yfvrs"]
+[ext_resource type="Texture2D" uid="uid://b1mgx6oje7ari" path="res://Sprites/Brawler-Girl/Idle/idle2.png" id="2_s3jih"]
+[ext_resource type="Texture2D" uid="uid://hbqnf1jkukib" path="res://Sprites/Brawler-Girl/Idle/idle3.png" id="3_k4o0q"]
+[ext_resource type="Texture2D" uid="uid://eej3c81nji8d" path="res://Sprites/Brawler-Girl/Idle/idle4.png" id="4_85viv"]
+[ext_resource type="Texture2D" uid="uid://yurik357sefx" path="res://Sprites/Brawler-Girl/Punch/punch1.png" id="5_aud3c"]
+[ext_resource type="Texture2D" uid="uid://c3mu17xow0vxh" path="res://Sprites/Brawler-Girl/Jump/jump1.png" id="6_22t1m"]
+[ext_resource type="Texture2D" uid="uid://8qu5i2g77nvi" path="res://Sprites/Brawler-Girl/Punch/punch2.png" id="6_ibocu"]
+[ext_resource type="Texture2D" uid="uid://dsb2s82hk8klr" path="res://Sprites/Brawler-Girl/Jump/jump2.png" id="7_jrbap"]
+[ext_resource type="Texture2D" uid="uid://dx6h2j7d2t8ur" path="res://Sprites/Brawler-Girl/Punch/punch3.png" id="7_oekcb"]
+[ext_resource type="Texture2D" uid="uid://bj2lv5ms4uyoc" path="res://Sprites/Brawler-Girl/Walk/walk1.png" id="8_htwl2"]
+[ext_resource type="Texture2D" uid="uid://jf3ls6xmud0o" path="res://Sprites/Brawler-Girl/Jump/jump4.png" id="8_rfl0w"]
+[ext_resource type="Texture2D" uid="uid://d210mtxty42y6" path="res://Sprites/Brawler-Girl/Walk/walk2.png" id="9_0ylaq"]
+[ext_resource type="Texture2D" uid="uid://dw2y42ohcnmy7" path="res://Sprites/Brawler-Girl/Jump_kick/jump_kick1.png" id="9_sw3kn"]
+[ext_resource type="Texture2D" uid="uid://c4sk34mmv2n22" path="res://Sprites/Brawler-Girl/Walk/walk3.png" id="10_js7fj"]
+[ext_resource type="Texture2D" uid="uid://k61fvpsvqm4e" path="res://Sprites/Brawler-Girl/Jump_kick/jump_kick2.png" id="10_qm2he"]
+[ext_resource type="Texture2D" uid="uid://baw0xsypxjdpn" path="res://Sprites/Brawler-Girl/Walk/walk4.png" id="11_uyx3f"]
+[ext_resource type="Texture2D" uid="uid://c6o6c7pke2c2x" path="res://Sprites/Brawler-Girl/Jump_kick/jump_kick3.png" id="11_yk5iy"]
+[ext_resource type="Texture2D" uid="uid://b4cj2hossj2yd" path="res://Sprites/Brawler-Girl/Walk/walk5.png" id="12_ldnwb"]
+[ext_resource type="Texture2D" uid="uid://baf67r5d777c2" path="res://Sprites/Brawler-Girl/Walk/walk6.png" id="13_nbw6v"]
+[ext_resource type="Texture2D" uid="uid://dnq4vayphd7nl" path="res://Sprites/Brawler-Girl/Walk/walk7.png" id="14_aa5uu"]
+[ext_resource type="Texture2D" uid="uid://ndyxw35jomo4" path="res://Sprites/Brawler-Girl/Walk/walk8.png" id="15_g33h1"]
+[ext_resource type="Texture2D" uid="uid://bd7q3gd7dexrt" path="res://Sprites/Brawler-Girl/Walk/walk9.png" id="16_1rxb5"]
+[ext_resource type="Texture2D" uid="uid://c4tmsgicxw06l" path="res://Sprites/Brawler-Girl/Walk/walk10.png" id="17_svx7j"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_rfl0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_yfvrs")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a22lo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s3jih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_k4o0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_85viv")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_22t1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jrbap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_yfvrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rfl0w")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_sw3kn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qm2he")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_yk5iy")
+}],
+"loop": false,
+"name": &"Jump_Kick",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_aud3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ibocu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_oekcb")
+}],
+"loop": true,
+"name": &"Punch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_htwl2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0ylaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_js7fj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_uyx3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ldnwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nbw6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_aa5uu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_g33h1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_1rxb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_svx7j")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]

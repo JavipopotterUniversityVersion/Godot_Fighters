@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TagData" load_steps=2 format=3 uid="uid://cqdkla7j054jh"]
+
+[ext_resource type="Script" path="res://CustomResources/TagData.gd" id="1_ja7hk"]
+
+[resource]
+script = ExtResource("1_ja7hk")
+_tag = "Player"
+_target_tags = PackedStringArray("Enemy")
