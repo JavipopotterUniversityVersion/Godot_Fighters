@@ -23,7 +23,161 @@
 [ext_resource type="Script" path="res://Scripts/HealthSystem/Health_Handler.gd" id="21_667v4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_or40q"]
-size = Vector2(13, 44.6531)
+size = Vector2(20, 2.48645)
+
+[sub_resource type="Animation" id="Animation_e6w35"]
+resource_name = "Dead"
+length = 0.40001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubBody/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Pain"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubBody/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_c5e4y"]
+resource_name = "Idle"
+length = 0.500013
+loop_mode = 2
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubBody/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubBody/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_tfks8"]
+resource_name = "Pain"
+length = 0.250012
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubBody/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Pain"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubBody/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_4mrge"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubBody/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubBody/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_lw7yr"]
+resource_name = "Walk"
+length = 0.40001
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubBody/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Walk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubBody/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sloyu"]
+_data = {
+"Dead": SubResource("Animation_e6w35"),
+"Idle": SubResource("Animation_c5e4y"),
+"Pain": SubResource("Animation_tfks8"),
+"RESET": SubResource("Animation_4mrge"),
+"Walk": SubResource("Animation_lw7yr")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e2hl5"]
 animations = [{
@@ -79,215 +233,65 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_e6w35"]
-resource_name = "Dead"
-length = 0.40001
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Pain"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_c5e4y"]
-resource_name = "Idle"
-length = 0.500013
-loop_mode = 2
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_tfks8"]
-resource_name = "Pain"
-length = 0.250012
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Pain"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.125),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_4mrge"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_lw7yr"]
-resource_name = "Walk"
-length = 0.40001
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Walk"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sloyu"]
-_data = {
-"Dead": SubResource("Animation_e6w35"),
-"Idle": SubResource("Animation_c5e4y"),
-"Pain": SubResource("Animation_tfks8"),
-"RESET": SubResource("Animation_4mrge"),
-"Walk": SubResource("Animation_lw7yr")
-}
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3ruj"]
-size = Vector2(8.33332, 35.75)
+size = Vector2(18.6667, 36.875)
 
-[node name="Enemy2D" type="CharacterBody2D" groups=["Enemies"]]
+[node name="Enemy2D" type="CharacterBody2D" node_paths=PackedStringArray("state_machine") groups=["Enemies"]]
 position = Vector2(-156, 61)
 scale = Vector2(3, 3)
 collision_layer = 2
 script = ExtResource("1_eb8k6")
+state_machine = NodePath("SubBody/StateMachine")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(-1.50001, -21.8401)
+position = Vector2(1.99999, -0.756775)
 shape = SubResource("RectangleShape2D_or40q")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2.66667, -30.3333)
-sprite_frames = SubResource("SpriteFrames_e2hl5")
-animation = &"Idle"
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_sloyu")
 }
 
-[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("idle_state", "pain_state", "dead_state", "_inital_state")]
+[node name="HealthHandler" type="Node" parent="."]
+script = ExtResource("21_667v4")
+
+[node name="SubBody" type="CharacterBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubBody"]
+position = Vector2(2.66667, -30.3333)
+sprite_frames = SubResource("SpriteFrames_e2hl5")
+animation = &"Idle"
+
+[node name="StateMachine" type="Node2D" parent="SubBody" node_paths=PackedStringArray("idle_state", "pain_state", "dead_state", "_inital_state", "_handler")]
 script = ExtResource("10_xjdbi")
 idle_state = NodePath("WalkState")
 pain_state = NodePath("Pain")
 dead_state = NodePath("DeadState")
 _inital_state = NodePath("WalkState")
+_handler = NodePath("../..")
 
-[node name="Idle" type="Node2D" parent="StateMachine"]
+[node name="Idle" type="Node2D" parent="SubBody/StateMachine"]
 script = ExtResource("11_oum0a")
 
-[node name="Pain" type="Node2D" parent="StateMachine"]
+[node name="Pain" type="Node2D" parent="SubBody/StateMachine"]
 script = ExtResource("19_ajfme")
 
-[node name="HurtBox" type="Area2D" parent="StateMachine/Pain" node_paths=PackedStringArray("_health_handler")]
+[node name="HurtBox" type="Area2D" parent="SubBody/StateMachine/Pain" node_paths=PackedStringArray("_health_handler")]
 script = ExtResource("20_ugli2")
 _tag_data = ExtResource("14_lem0r")
-_health_handler = NodePath("../../../HealthHandler")
+_health_handler = NodePath("../../../../HealthHandler")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Pain/HurtBox"]
-position = Vector2(-2, -22.875)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubBody/StateMachine/Pain/HurtBox"]
+position = Vector2(-0.333336, -22.7708)
 shape = SubResource("RectangleShape2D_l3ruj")
 debug_color = Color(0.843256, 0, 0.188319, 0.42)
 
-[node name="DeadState" type="Node2D" parent="StateMachine"]
+[node name="DeadState" type="Node2D" parent="SubBody/StateMachine"]
 script = ExtResource("15_2ou71")
 
-[node name="WalkState" type="Node2D" parent="StateMachine"]
+[node name="WalkState" type="Node2D" parent="SubBody/StateMachine"]
 script = ExtResource("20_v141c")
 
-[node name="HealthHandler" type="Node" parent="."]
-script = ExtResource("21_667v4")
-
-[connection signal="on_dead" from="StateMachine/DeadState" to="." method="disable"]
-[connection signal="on_die" from="HealthHandler" to="StateMachine" method="die"]
-[connection signal="on_get_damage" from="HealthHandler" to="StateMachine" method="get_damage"]
+[connection signal="on_die" from="HealthHandler" to="SubBody/StateMachine" method="die"]
+[connection signal="on_get_damage" from="HealthHandler" to="SubBody/StateMachine" method="get_damage"]
+[connection signal="on_dead" from="SubBody/StateMachine/DeadState" to="." method="disable"]

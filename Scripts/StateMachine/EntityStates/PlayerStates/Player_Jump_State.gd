@@ -5,15 +5,14 @@ const JUMP_FORCE:float = -2000
 const AIR_SPEED:float = 400
 
 func enter() -> void:
-	entity.velocity.y = JUMP_FORCE
+	subBody.velocity.y = JUMP_FORCE
 	entity.animation_player.play(JUMP)
 
 func process_physics(delta: float) -> State:
-	move(get_move_dir())
-	return super(delta)
+	move(get_move_dir().x)
+	entity.move_and_slide()
 
-func get_move_dir() -> float:
-	return Input.get_axis(left_key, right_key)
+	return super(delta)
 
 func process_input(event:InputEvent) -> State:
 	if event.is_action_pressed(punch_key): return jump_kick_state

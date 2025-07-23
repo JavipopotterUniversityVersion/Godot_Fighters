@@ -2,6 +2,7 @@ class_name StateMachine
 extends Node
 
 @export var _inital_state:State
+@export var _handler:EntityHandler
 var _current_state:State
 
 func init() -> void: change_state(_inital_state)
@@ -21,7 +22,7 @@ func change_state(new_state:State):
 	new_state.enter()
 
 func get_handler() -> EntityHandler:
-	return get_parent()
+	return _handler
 
 func get_current_state() -> State:
 	return _current_state

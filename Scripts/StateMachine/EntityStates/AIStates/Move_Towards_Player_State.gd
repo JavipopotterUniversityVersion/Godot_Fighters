@@ -10,7 +10,7 @@ func enter() -> void:
 	entity.animation_player.play("Walk")
 
 func process_frame(delta:float) -> State:
-	if (get_move_dir() < 0 and flipped) or (get_move_dir() > 0 and not flipped):
+	if (get_move_dir().x < 0 and flipped) or (get_move_dir().x > 0 and not flipped):
 		flipped = not flipped
 		entity.scale.x = -3
 			
@@ -19,12 +19,12 @@ func process_frame(delta:float) -> State:
 func process_physics(delta: float) -> State:
 	move(get_move_dir())
 	entity.move_and_slide()
-	if get_move_dir() == 0.0: return idle_state
+	if get_move_dir().x == 0.0: return idle_state
 	return super(delta)
 
-func get_move_dir() -> float:
+func get_move_dir() -> Vector2:
 	var move_dir:Vector2 = player.global_position - entity.global_position
-	return move_dir.normalized().x
+	return move_dir.normalized()
 
-func move(move_dir:float) -> void:
-	entity.velocity.x = move_dir * SPEED
+func move(move_dir:Vector2) -> void:
+	entity.velocity = move_dir * SPEED

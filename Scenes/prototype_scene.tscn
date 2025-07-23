@@ -6,7 +6,7 @@
 
 [sub_resource type="Gradient" id="Gradient_4gsbr"]
 offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 1, 1)
+colors = PackedColorArray(0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_6jm5n"]
 gradient = SubResource("Gradient_4gsbr")
@@ -16,29 +16,23 @@ size = Vector2(64.0466, 64)
 
 [node name="PrototypeScene" type="Node"]
 
-[node name="Player2D" parent="." instance=ExtResource("1_x006s")]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-10, 241)
-scale = Vector2(21.4219, 3.0625)
-texture = SubResource("GradientTexture2D_6jm5n")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
-gravity_scale = 0.0
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
-position = Vector2(0.0466818, 1.52588e-05)
-shape = SubResource("RectangleShape2D_hytdm")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_xyvtb")
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(3, -259)
+scale = Vector2(21.4219, 3.0625)
+texture = SubResource("GradientTexture2D_6jm5n")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D2"]
+gravity_scale = 0.0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/RigidBody2D"]
+position = Vector2(0.0466818, 1.52588e-05)
+shape = SubResource("RectangleShape2D_hytdm")
+
+[node name="Player2D" parent="." instance=ExtResource("1_x006s")]
+
 [node name="Enemy2D" parent="." instance=ExtResource("3_r2idn")]
-position = Vector2(-46, 138)
-
-[node name="Enemy2D2" parent="." instance=ExtResource("3_r2idn")]
-position = Vector2(147, 138)
-
-[node name="Enemy2D3" parent="." instance=ExtResource("3_r2idn")]
-position = Vector2(327, 138)
+position = Vector2(266, 65)

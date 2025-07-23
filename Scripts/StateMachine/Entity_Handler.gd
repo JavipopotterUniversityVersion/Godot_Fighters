@@ -1,7 +1,7 @@
 class_name EntityHandler
 extends CharacterBody2D
 
-@onready var state_machine:StateMachine = $"StateMachine"
+@export var state_machine:StateMachine
 @onready var animation_player:AnimationPlayer = $Animation
 
 func _ready() -> void: 

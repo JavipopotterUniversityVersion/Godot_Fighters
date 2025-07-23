@@ -4,15 +4,13 @@ extends PlayerState
 const SPEED:float = 400
 var flipped:bool = false
 
-var _last_pressed:String
-
 func enter() -> void:
 	super()
 	entity.animation_player.play(WALK)
 
 func process_frame(delta:float) -> State:
 	
-	if (get_move_dir() > 0 and flipped) or (get_move_dir() < 0 and not flipped):
+	if (get_move_dir().x > 0 and flipped) or (get_move_dir().x < 0 and not flipped):
 		flipped = not flipped
 		entity.scale.x = -3
 			
@@ -20,18 +18,11 @@ func process_frame(delta:float) -> State:
 
 func process_physics(delta: float) -> State:
 	move(get_move_dir())
-	if get_move_dir() == 0.0: return idle_state
+	entity.move_and_slide()
+	if get_move_dir() == Vector2.ZERO: return idle_state
 	return super(delta)
 
-func get_move_dir() -> float:
-	var axis = Input.get_axis(left_key, right_key)
-	if axis == 0:
-		if _last_pressed == left_key: axis = -1
-		else: if _last_pressed == right_key: axis = 1
-	return axis
-
 func process_input(event:InputEvent):
-	
 	if event.is_action_pressed(left_key): _last_pressed = left_key
 	else: if event.is_action_pressed(right_key): _last_pressed = right_key
 	else: _last_pressed = ""
@@ -40,5 +31,6 @@ func process_input(event:InputEvent):
 	if event.is_action_pressed(punch_key): return punch_state
 	return null
 
-func move(move_dir:float) -> void:
-	entity.velocity.x = move_dir * SPEED
+func move(move_dir:Vector2) -> void:
+	entity.velocity.x = move_dir.x * SPEED
+	entity.velocity.y = move_dir.y * SPEED

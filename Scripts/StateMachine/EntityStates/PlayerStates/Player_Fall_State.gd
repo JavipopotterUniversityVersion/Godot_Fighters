@@ -7,18 +7,17 @@ func enter() -> void:
 	entity.animation_player.play(FALL)
 
 func process_physics(delta: float) -> State:
-	move(get_move_dir())
+	move(get_move_dir().x)
+	entity.move_and_slide()
 	
-	if entity.is_on_floor():
-		if get_move_dir() != 0: return walk_state
+	if subBody.position.y >= 0:
+		subBody.position.y = 0
+		if get_move_dir().x != 0: return walk_state
 		else: return idle_state
 			
-	entity.velocity.y += gravity * delta
-	entity.move_and_slide()
+	subBody.velocity.y += gravity * delta
+	subBody.move_and_slide()
 	return null
-
-func get_move_dir() -> float:
-	return Input.get_axis(left_key, right_key)
 
 func move(move_dir:float) -> void:
 	entity.velocity.x = move_dir * AIR_SPEED

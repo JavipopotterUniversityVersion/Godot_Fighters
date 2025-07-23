@@ -1,6 +1,8 @@
 class_name PlayerState
 extends EntityState
 
+var _last_pressed:String
+
 #AnimationNames
 const WALK:String = "Walk"
 const PUNCH:String = "Punch"
@@ -19,13 +21,22 @@ const FALL:String = "Fall"
 var movement_key:String = "Movement"
 var left_key:String = "Left"
 var right_key:String = "Right"
+var up_key:String = "Up"
+var down_key:String = "Down"
 var jump_key:String = "Jump"
 var punch_key:String = "Punch"
 
 func process_physics(delta: float) -> State:
-	if (entity.velocity.y > 0 and not entity.is_on_floor()): 
+	if (subBody.velocity.y > 0 and not subBody.position.y >= 0): 
 		return fall_state
-		
-	entity.velocity.y += gravity * delta
-	entity.move_and_slide()
+	subBody.velocity.y += gravity * delta
+	subBody.move_and_slide()
+	if subBody.position.y >= 0: subBody.position.y = 0
 	return null
+
+func get_move_dir() -> Vector2:
+	var axis = Input.get_vector(left_key, right_key, up_key, down_key)
+	if axis.x == 0:
+		if _last_pressed == left_key: axis.x = -1
+		else: if _last_pressed == right_key: axis.x = 1
+	return axis
