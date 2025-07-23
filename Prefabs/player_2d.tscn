@@ -286,9 +286,11 @@ state_machine = NodePath("SubBody/StateMachine")
 [node name="SubBody" type="CharacterBody2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubBody"]
-position = Vector2(0.666656, -31.3333)
+y_sort_enabled = true
+position = Vector2(-1, 0.333336)
 sprite_frames = ExtResource("2_0kiqy")
 animation = &"Idle"
+offset = Vector2(1.66666, -31.6666)
 
 [node name="StateMachine" type="Node2D" parent="SubBody" node_paths=PackedStringArray("walk_state", "jump_state", "fall_state", "punch_state", "jump_kick_state", "idle_state", "pain_state", "_inital_state", "_handler")]
 script = ExtResource("3_4t2rv")

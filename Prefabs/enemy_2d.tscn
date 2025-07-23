@@ -258,9 +258,11 @@ script = ExtResource("21_667v4")
 [node name="SubBody" type="CharacterBody2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubBody"]
-position = Vector2(2.66667, -30.3333)
+y_sort_enabled = true
+position = Vector2(1.33333, 0.666666)
 sprite_frames = SubResource("SpriteFrames_e2hl5")
 animation = &"Idle"
+offset = Vector2(1.33334, -31)
 
 [node name="StateMachine" type="Node2D" parent="SubBody" node_paths=PackedStringArray("idle_state", "pain_state", "dead_state", "_inital_state", "_handler")]
 script = ExtResource("10_xjdbi")
