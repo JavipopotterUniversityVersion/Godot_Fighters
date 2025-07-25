@@ -6,9 +6,12 @@ var _last_pressed:String
 #AnimationNames
 const WALK:String = "Walk"
 const PUNCH:String = "Punch"
+const KICK:String = "Kick"
 const JUMP_KICK:String = "Jump_Kick"
 const JUMP:String = "Jump"
 const FALL:String = "Fall"
+const TRY_GRAB:String = "Try_Grab"
+const GRAB:String = "Grab"
 
 #States
 @onready var walk_state:PlayerState = get_parent().walk_state
@@ -16,6 +19,7 @@ const FALL:String = "Fall"
 @onready var fall_state:PlayerState = get_parent().fall_state
 @onready var punch_state:PlayerState = get_parent().punch_state
 @onready var jump_kick_state:PlayerState = get_parent().jump_kick_state
+@onready var grab_state:PlayerState = get_parent().grab_state
 
 #Input Keys
 var movement_key:String = "Movement"
@@ -25,6 +29,7 @@ var up_key:String = "Up"
 var down_key:String = "Down"
 var jump_key:String = "Jump"
 var punch_key:String = "Punch"
+var grab_key:String = "Grab"
 
 func process_physics(delta: float) -> State:
 	if (subBody.velocity.y > 0 and not subBody.position.y >= 0): 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://du672cqecnexl"]
+[gd_scene load_steps=34 format=3 uid="uid://du672cqecnexl"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Entity_Handler.gd" id="1_eb8k6"]
 [ext_resource type="Texture2D" uid="uid://csy5ygag26w3s" path="res://Sprites/Enemy-Punk/Idle/idle1.png" id="2_fav76"]
@@ -21,6 +21,8 @@
 [ext_resource type="Script" path="res://Scripts/HealthSystem/Hurt_Box.gd" id="20_ugli2"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/EntityStates/AIStates/Move_Towards_Player_State.gd" id="20_v141c"]
 [ext_resource type="Script" path="res://Scripts/HealthSystem/Health_Handler.gd" id="21_667v4"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/EntityStates/Grabbed_State.gd" id="22_ajbcd"]
+[ext_resource type="Texture2D" uid="uid://0fgvtevdlgje" path="res://Sprites/Circle.png" id="22_h53l3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_or40q"]
 size = Vector2(20, 2.48645)
@@ -52,6 +54,36 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_bi3sx"]
+resource_name = "Grabbed"
+length = 0.20001
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubBody/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Pain"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubBody/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_c5e4y"]
@@ -173,6 +205,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sloyu"]
 _data = {
 "Dead": SubResource("Animation_e6w35"),
+"Grabbed": SubResource("Animation_bi3sx"),
 "Idle": SubResource("Animation_c5e4y"),
 "Pain": SubResource("Animation_tfks8"),
 "RESET": SubResource("Animation_4mrge"),
@@ -240,6 +273,7 @@ size = Vector2(18.6667, 36.875)
 position = Vector2(-156, 61)
 scale = Vector2(3, 3)
 collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_eb8k6")
 state_machine = NodePath("SubBody/StateMachine")
 
@@ -277,8 +311,9 @@ script = ExtResource("11_oum0a")
 [node name="Pain" type="Node2D" parent="SubBody/StateMachine"]
 script = ExtResource("19_ajfme")
 
-[node name="HurtBox" type="Area2D" parent="SubBody/StateMachine/Pain" node_paths=PackedStringArray("_health_handler")]
+[node name="HurtBox" type="Area2D" parent="SubBody/StateMachine/Pain" node_paths=PackedStringArray("entity", "_health_handler")]
 script = ExtResource("20_ugli2")
+entity = NodePath("../../../..")
 _tag_data = ExtResource("14_lem0r")
 _health_handler = NodePath("../../../../HealthHandler")
 
@@ -292,6 +327,16 @@ script = ExtResource("15_2ou71")
 
 [node name="WalkState" type="Node2D" parent="SubBody/StateMachine"]
 script = ExtResource("20_v141c")
+
+[node name="GrabbedState" type="Node2D" parent="SubBody/StateMachine"]
+script = ExtResource("22_ajbcd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.0862745, 0, 0.2, 0.498039)
+z_index = -1
+position = Vector2(1.33333, -2.38419e-07)
+scale = Vector2(0.0963541, 0.0208333)
+texture = ExtResource("22_h53l3")
 
 [connection signal="on_die" from="HealthHandler" to="SubBody/StateMachine" method="die"]
 [connection signal="on_get_damage" from="HealthHandler" to="SubBody/StateMachine" method="get_damage"]

@@ -15,6 +15,9 @@ func process_physics(delta:float) -> void:
 	var new_state:State = _current_state.process_physics(delta)
 	if new_state: change_state(new_state)
 
+func change_state_name_input(new_state:String):
+	change_state(get_node(new_state))
+
 func change_state(new_state:State):
 	if _current_state:
 		_current_state.exit()

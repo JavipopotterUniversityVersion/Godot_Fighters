@@ -1,10 +1,13 @@
-[gd_resource type="SpriteFrames" load_steps=25 format=3 uid="uid://dc2d5ohn54nl"]
+[gd_resource type="SpriteFrames" load_steps=33 format=3 uid="uid://dc2d5ohn54nl"]
 
 [ext_resource type="Texture2D" uid="uid://h1aqw04uk0ce" path="res://Sprites/Brawler-Girl/Idle/idle1.png" id="1_a22lo"]
 [ext_resource type="Texture2D" uid="uid://1obmofy0fnx5" path="res://Sprites/Brawler-Girl/Jump/jump3.png" id="1_yfvrs"]
 [ext_resource type="Texture2D" uid="uid://b1mgx6oje7ari" path="res://Sprites/Brawler-Girl/Idle/idle2.png" id="2_s3jih"]
 [ext_resource type="Texture2D" uid="uid://hbqnf1jkukib" path="res://Sprites/Brawler-Girl/Idle/idle3.png" id="3_k4o0q"]
+[ext_resource type="Texture2D" uid="uid://dob7knca8xcnp" path="res://Sprites/Brawler-Girl/Jab/jab1.png" id="3_krbyn"]
 [ext_resource type="Texture2D" uid="uid://eej3c81nji8d" path="res://Sprites/Brawler-Girl/Idle/idle4.png" id="4_85viv"]
+[ext_resource type="Texture2D" uid="uid://cymtv06t5b0im" path="res://Sprites/Brawler-Girl/Jab/jab2.png" id="4_p0yd0"]
+[ext_resource type="Texture2D" uid="uid://bx1s1gb4elbg1" path="res://Sprites/Brawler-Girl/Jab/jab3.png" id="5_5166l"]
 [ext_resource type="Texture2D" uid="uid://yurik357sefx" path="res://Sprites/Brawler-Girl/Punch/punch1.png" id="5_aud3c"]
 [ext_resource type="Texture2D" uid="uid://c3mu17xow0vxh" path="res://Sprites/Brawler-Girl/Jump/jump1.png" id="6_22t1m"]
 [ext_resource type="Texture2D" uid="uid://8qu5i2g77nvi" path="res://Sprites/Brawler-Girl/Punch/punch2.png" id="6_ibocu"]
@@ -18,11 +21,16 @@
 [ext_resource type="Texture2D" uid="uid://k61fvpsvqm4e" path="res://Sprites/Brawler-Girl/Jump_kick/jump_kick2.png" id="10_qm2he"]
 [ext_resource type="Texture2D" uid="uid://baw0xsypxjdpn" path="res://Sprites/Brawler-Girl/Walk/walk4.png" id="11_uyx3f"]
 [ext_resource type="Texture2D" uid="uid://c6o6c7pke2c2x" path="res://Sprites/Brawler-Girl/Jump_kick/jump_kick3.png" id="11_yk5iy"]
+[ext_resource type="Texture2D" uid="uid://bw25k46e6624j" path="res://Sprites/Brawler-Girl/Kick/kick1.png" id="12_dpvms"]
 [ext_resource type="Texture2D" uid="uid://b4cj2hossj2yd" path="res://Sprites/Brawler-Girl/Walk/walk5.png" id="12_ldnwb"]
+[ext_resource type="Texture2D" uid="uid://d1q0ab6c4kuvs" path="res://Sprites/Brawler-Girl/Kick/kick2.png" id="13_650y6"]
 [ext_resource type="Texture2D" uid="uid://baf67r5d777c2" path="res://Sprites/Brawler-Girl/Walk/walk6.png" id="13_nbw6v"]
 [ext_resource type="Texture2D" uid="uid://dnq4vayphd7nl" path="res://Sprites/Brawler-Girl/Walk/walk7.png" id="14_aa5uu"]
+[ext_resource type="Texture2D" uid="uid://baq01usvweay1" path="res://Sprites/Brawler-Girl/Kick/kick3.png" id="14_fw13q"]
 [ext_resource type="Texture2D" uid="uid://ndyxw35jomo4" path="res://Sprites/Brawler-Girl/Walk/walk8.png" id="15_g33h1"]
+[ext_resource type="Texture2D" uid="uid://cnpgqpjafh2h" path="res://Sprites/Brawler-Girl/Kick/kick4.png" id="15_tfu5t"]
 [ext_resource type="Texture2D" uid="uid://bd7q3gd7dexrt" path="res://Sprites/Brawler-Girl/Walk/walk9.png" id="16_1rxb5"]
+[ext_resource type="Texture2D" uid="uid://dihrdcfm0iqhd" path="res://Sprites/Brawler-Girl/Kick/kick5.png" id="16_jahqo"]
 [ext_resource type="Texture2D" uid="uid://c4tmsgicxw06l" path="res://Sprites/Brawler-Girl/Walk/walk10.png" id="17_svx7j"]
 
 [resource]
@@ -36,6 +44,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_krbyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p0yd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5166l")
+}],
+"loop": true,
+"name": &"Grab",
 "speed": 5.0
 }, {
 "frames": [{
@@ -84,6 +106,26 @@ animations = [{
 }],
 "loop": false,
 "name": &"Jump_Kick",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_dpvms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_650y6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fw13q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_tfu5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_jahqo")
+}],
+"loop": true,
+"name": &"Kick",
 "speed": 5.0
 }, {
 "frames": [{

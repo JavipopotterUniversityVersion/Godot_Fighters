@@ -9,7 +9,7 @@ func enter() -> void:
 	entity.animation_player.play(JUMP)
 
 func process_physics(delta: float) -> State:
-	move(get_move_dir().x)
+	move(get_move_dir())
 	entity.move_and_slide()
 
 	return super(delta)
@@ -18,5 +18,5 @@ func process_input(event:InputEvent) -> State:
 	if event.is_action_pressed(punch_key): return jump_kick_state
 	return null
 
-func move(move_dir:float) -> void:
-	entity.velocity.x = move_dir * AIR_SPEED
+func move(move_dir:Vector2) -> void:
+	entity.velocity = move_dir * AIR_SPEED

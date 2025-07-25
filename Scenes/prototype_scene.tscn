@@ -21,8 +21,8 @@ y_sort_enabled = true
 script = ExtResource("2_xyvtb")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(3, -259)
-scale = Vector2(21.4219, 3.0625)
+position = Vector2(3, -265.5)
+scale = Vector2(21.4219, 3.26563)
 texture = SubResource("GradientTexture2D_6jm5n")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D2"]
@@ -30,7 +30,7 @@ gravity_scale = 0.0
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/RigidBody2D"]
-position = Vector2(0.0466818, 1.52588e-05)
+position = Vector2(0.0466818, 2.28882e-05)
 shape = SubResource("RectangleShape2D_hytdm")
 
 [node name="Player2D" parent="." instance=ExtResource("1_x006s")]

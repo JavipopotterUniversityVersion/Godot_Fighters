@@ -1,6 +1,7 @@
 class_name HurtBox
 extends Area2D
 
+@export var entity:EntityHandler
 @export var _tag_data:TagData
 @export var _health_handler:HealthHandler
 

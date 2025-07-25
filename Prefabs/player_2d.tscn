@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cd4e6adffvw3r"]
+[gd_scene load_steps=34 format=3 uid="uid://cd4e6adffvw3r"]
 
 [ext_resource type="Script" path="res://Scripts/Player_Handler.gd" id="1_anti4"]
 [ext_resource type="SpriteFrames" uid="uid://dc2d5ohn54nl" path="res://Animations/brawler_girl.tres" id="2_0kiqy"]
@@ -14,15 +14,23 @@
 [ext_resource type="Script" path="res://Scripts/HealthSystem/Hurt_Box.gd" id="11_ajsne"]
 [ext_resource type="Script" path="res://Scripts/HealthSystem/Health_Handler.gd" id="12_l7olr"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/EntityStates/Pain_State.gd" id="12_lwq20"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/EntityStates/PlayerStates/Player_Grab_State.gd" id="14_6jw2s"]
+[ext_resource type="Texture2D" uid="uid://0fgvtevdlgje" path="res://Sprites/Circle.png" id="15_x1xhc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qcs5"]
 size = Vector2(33.2604, 23.8333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3mif"]
+size = Vector2(43.6667, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7f6b"]
 size = Vector2(30.4167, 51.4167)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3ruj"]
 size = Vector2(8.33332, 35.75)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l5728"]
+radius = 15.7233
 
 [sub_resource type="Animation" id="Animation_x1rl0"]
 resource_name = "Fall"
@@ -38,6 +46,35 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"Fall"]
+}
+
+[sub_resource type="Animation" id="Animation_jwkuo"]
+resource_name = "Grab"
+length = 0.20002
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubBody/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Grab"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubBody/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_ddx8c"]
@@ -130,11 +167,52 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SubBody/StateMachine/Jump-Kick/HitBox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("SubBody/StateMachine/Jump-Kick/Air_Kick/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_oktth"]
+resource_name = "Kick"
+length = 0.416675
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubBody/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Kick"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubBody/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubBody/StateMachine/Attack/Kick/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.166667, 0.333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -171,7 +249,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SubBody/StateMachine/Punch/HitBox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("SubBody/StateMachine/Attack/Punch/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -210,7 +288,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SubBody/StateMachine/Jump-Kick/HitBox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("SubBody/StateMachine/Jump-Kick/Air_Kick/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -222,7 +300,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SubBody/StateMachine/Punch/HitBox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("SubBody/StateMachine/Attack/Punch/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -230,6 +308,71 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SubBody/StateMachine/Attack/Kick/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubBody/StateMachine/PlayerGrabState/GrabArea/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ds455"]
+resource_name = "Try_Grab"
+length = 0.40001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubBody/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Grab"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubBody/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubBody/StateMachine/PlayerGrabState/GrabArea/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_llf16"]
@@ -265,11 +408,14 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aoul4"]
 _data = {
 "Fall": SubResource("Animation_x1rl0"),
+"Grab": SubResource("Animation_jwkuo"),
 "Idle": SubResource("Animation_ddx8c"),
 "Jump": SubResource("Animation_i2guv"),
 "Jump_Kick": SubResource("Animation_kvwya"),
+"Kick": SubResource("Animation_oktth"),
 "Punch": SubResource("Animation_m87qh"),
 "RESET": SubResource("Animation_n5b58"),
+"Try_Grab": SubResource("Animation_ds455"),
 "Walk": SubResource("Animation_llf16")
 }
 
@@ -279,7 +425,7 @@ size = Vector2(18.3333, 3.33333)
 [node name="Player2D" type="CharacterBody2D" node_paths=PackedStringArray("state_machine") groups=["Players"]]
 position = Vector2(-408, 58)
 scale = Vector2(3, 3)
-collision_layer = 2
+collision_layer = 4
 script = ExtResource("1_anti4")
 state_machine = NodePath("SubBody/StateMachine")
 
@@ -291,13 +437,14 @@ sprite_frames = ExtResource("2_0kiqy")
 animation = &"Idle"
 offset = Vector2(1.66666, -31.6666)
 
-[node name="StateMachine" type="Node2D" parent="SubBody" node_paths=PackedStringArray("walk_state", "jump_state", "fall_state", "punch_state", "jump_kick_state", "idle_state", "pain_state", "_inital_state", "_handler")]
+[node name="StateMachine" type="Node2D" parent="SubBody" node_paths=PackedStringArray("walk_state", "jump_state", "fall_state", "punch_state", "jump_kick_state", "grab_state", "idle_state", "pain_state", "_inital_state", "_handler")]
 script = ExtResource("3_4t2rv")
 walk_state = NodePath("Walk")
 jump_state = NodePath("Jump")
 fall_state = NodePath("Fall")
-punch_state = NodePath("Punch")
+punch_state = NodePath("Attack")
 jump_kick_state = NodePath("Jump-Kick")
+grab_state = NodePath("PlayerGrabState")
 idle_state = NodePath("Idle")
 pain_state = NodePath("Pain")
 _inital_state = NodePath("Idle")
@@ -315,30 +462,41 @@ script = ExtResource("6_xe4jp")
 [node name="Fall" type="Node2D" parent="SubBody/StateMachine"]
 script = ExtResource("7_d4xu0")
 
-[node name="Punch" type="Node2D" parent="SubBody/StateMachine"]
+[node name="Attack" type="Node2D" parent="SubBody/StateMachine"]
 script = ExtResource("8_xcn0m")
 
-[node name="HitBox" type="Area2D" parent="SubBody/StateMachine/Punch"]
+[node name="Kick" type="Area2D" parent="SubBody/StateMachine/Attack"]
+script = ExtResource("9_skv31")
+_tag_data = ExtResource("10_crje6")
+_damage = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubBody/StateMachine/Attack/Kick"]
+position = Vector2(27.7031, -26.6667)
+shape = SubResource("RectangleShape2D_0qcs5")
+disabled = true
+debug_color = Color(0.576816, 0.545906, 0.259479, 0.42)
+
+[node name="Punch" type="Area2D" parent="SubBody/StateMachine/Attack"]
 script = ExtResource("9_skv31")
 _tag_data = ExtResource("10_crje6")
 _damage = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubBody/StateMachine/Punch/HitBox"]
-position = Vector2(27.7031, -26.6667)
-shape = SubResource("RectangleShape2D_0qcs5")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubBody/StateMachine/Attack/Punch"]
+position = Vector2(22.8333, -24.8333)
+shape = SubResource("RectangleShape2D_x3mif")
 disabled = true
 debug_color = Color(0.576816, 0.545906, 0.259479, 0.42)
 
 [node name="Jump-Kick" type="Node2D" parent="SubBody/StateMachine"]
 script = ExtResource("9_tmntc")
 
-[node name="HitBox" type="Area2D" parent="SubBody/StateMachine/Jump-Kick"]
+[node name="Air_Kick" type="Area2D" parent="SubBody/StateMachine/Jump-Kick"]
 script = ExtResource("9_skv31")
 _tag_data = ExtResource("10_crje6")
 _damage = 5
 _knock_back = 600
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubBody/StateMachine/Jump-Kick/HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubBody/StateMachine/Jump-Kick/Air_Kick"]
 position = Vector2(17.4583, -30.9583)
 shape = SubResource("RectangleShape2D_c7f6b")
 disabled = true
@@ -357,6 +515,17 @@ position = Vector2(-2, -22.875)
 shape = SubResource("RectangleShape2D_l3ruj")
 debug_color = Color(0.843256, 0, 0.188319, 0.42)
 
+[node name="PlayerGrabState" type="Node2D" parent="SubBody/StateMachine"]
+script = ExtResource("14_6jw2s")
+_tag_data = ExtResource("10_crje6")
+
+[node name="GrabArea" type="Area2D" parent="SubBody/StateMachine/PlayerGrabState"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubBody/StateMachine/PlayerGrabState/GrabArea"]
+position = Vector2(17, -31.3333)
+shape = SubResource("CircleShape2D_l5728")
+disabled = true
+
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_aoul4")
@@ -368,5 +537,12 @@ script = ExtResource("12_l7olr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.833344, -1.66667)
 shape = SubResource("RectangleShape2D_av6k1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.0862745, 0, 0.2, 0.498039)
+z_index = -1
+position = Vector2(-1, -1.66667)
+scale = Vector2(0.0963541, 0.0208333)
+texture = ExtResource("15_x1xhc")
 
 [connection signal="on_get_damage" from="HealthHandler" to="SubBody/StateMachine" method="get_damage"]
