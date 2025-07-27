@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://orvvri4h6qjf"
-path="res://.godot/imported/mascara 164x128.png-22599980603fd64b61b528b5f7da5809.ctex"
+uid="uid://c02bm6w8il6kc"
+path="res://.godot/imported/HockeySheet.png-2a451d59ebf54aee7e5001e3712ef6c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ninja/mascara 164x128.png"
-dest_files=["res://.godot/imported/mascara 164x128.png-22599980603fd64b61b528b5f7da5809.ctex"]
+source_file="res://Sprites/Hockey/HockeySheet.png"
+dest_files=["res://.godot/imported/HockeySheet.png-2a451d59ebf54aee7e5001e3712ef6c6.ctex"]
 
 [params]
 

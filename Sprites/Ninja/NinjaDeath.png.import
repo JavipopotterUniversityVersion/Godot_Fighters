@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtfo3doov64s7"
-path="res://.godot/imported/ninja señal 86x86.png-95c0ccee818e23781242f740cdf8aac0.ctex"
+uid="uid://0ayx2h6o71n6"
+path="res://.godot/imported/NinjaDeath.png-e37b7a029a50ed673d9a5bc01f0c8036.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ninja/ninja señal 86x86.png"
-dest_files=["res://.godot/imported/ninja señal 86x86.png-95c0ccee818e23781242f740cdf8aac0.ctex"]
+source_file="res://Sprites/Ninja/NinjaDeath.png"
+dest_files=["res://.godot/imported/NinjaDeath.png-e37b7a029a50ed673d9a5bc01f0c8036.ctex"]
 
 [params]
 

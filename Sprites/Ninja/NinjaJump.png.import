@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s067tovytp7n"
-path="res://.godot/imported/aReenviadoninja señal 86x86.png-db8edd100cd2b726db60600b127fc762.ctex"
+uid="uid://ctbdbjrv6ir2w"
+path="res://.godot/imported/NinjaJump.png-672307c90e4d97be445d0d5b7b967ca7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ninja/aReenviadoninja señal 86x86.png"
-dest_files=["res://.godot/imported/aReenviadoninja señal 86x86.png-db8edd100cd2b726db60600b127fc762.ctex"]
+source_file="res://Sprites/Ninja/NinjaJump.png"
+dest_files=["res://.godot/imported/NinjaJump.png-672307c90e4d97be445d0d5b7b967ca7.ctex"]
 
 [params]
 

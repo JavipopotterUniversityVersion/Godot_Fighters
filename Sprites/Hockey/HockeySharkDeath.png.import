@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vvmjouj2yo81"
-path="res://.godot/imported/nuevoRun(5Abajo.png-f6047cc971bdcb74e9cfe9ef0c8efb82.ctex"
+uid="uid://orvvri4h6qjf"
+path="res://.godot/imported/HockeySharkDeath.png-b0c01fa403ecd7bbaf394ca24b92a828.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ninja/nuevoRun(5Abajo.png"
-dest_files=["res://.godot/imported/nuevoRun(5Abajo.png-f6047cc971bdcb74e9cfe9ef0c8efb82.ctex"]
+source_file="res://Sprites/Hockey/HockeySharkDeath.png"
+dest_files=["res://.godot/imported/HockeySharkDeath.png-b0c01fa403ecd7bbaf394ca24b92a828.ctex"]
 
 [params]
 

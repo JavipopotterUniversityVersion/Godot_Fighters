@@ -9,7 +9,7 @@ func enter() -> void:
 	entity.animation_player.play(DEAD)
 	Camera.shake_camera(1.035, Vector2(15,15))
 	HitStopManager.hit_stop_short()
-	entity.animation_player.animation_finished.connect(func(_anim): _dead = true)
+	entity.animation_player.animation_finished.connect(func(_anim): _dead = true, 4)
 
 func process_frame(delta:float) -> State:
 	super(delta)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oc45pcvmlcen"
-path="res://.godot/imported/saltoAlternativo.png-6b014fa736efe8bb2b8a1ca6f9b376ff.ctex"
+uid="uid://dtfo3doov64s7"
+path="res://.godot/imported/NinjaSign.png-54abcb4ac035372f6fc01186ea2ee65b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ninja/saltoAlternativo.png"
-dest_files=["res://.godot/imported/saltoAlternativo.png-6b014fa736efe8bb2b8a1ca6f9b376ff.ctex"]
+source_file="res://Sprites/Ninja/NinjaSign.png"
+dest_files=["res://.godot/imported/NinjaSign.png-54abcb4ac035372f6fc01186ea2ee65b.ctex"]
 
 [params]
 

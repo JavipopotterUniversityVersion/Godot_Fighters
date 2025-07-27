@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yyjqpx62s6iw"
-path="res://.godot/imported/ninja objeto salto 62x62.png-2b608066e215f7b0f46ac558c9200d6c.ctex"
+uid="uid://vvmjouj2yo81"
+path="res://.godot/imported/NinjaRun.png-ceb3c9dcaeff078300f04c0e6b8aeeba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ninja/ninja objeto salto 62x62.png"
-dest_files=["res://.godot/imported/ninja objeto salto 62x62.png-2b608066e215f7b0f46ac558c9200d6c.ctex"]
+source_file="res://Sprites/Ninja/NinjaRun.png"
+dest_files=["res://.godot/imported/NinjaRun.png-ceb3c9dcaeff078300f04c0e6b8aeeba.ctex"]
 
 [params]
 

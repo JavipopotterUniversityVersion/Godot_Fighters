@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0ayx2h6o71n6"
-path="res://.godot/imported/Ninja muerte 74x62.png-03f689891345c5a35392072c2b90ecc5.ctex"
+uid="uid://bmefeetqct7q7"
+path="res://.godot/imported/NinjaSmokeBomb.png-b96e421ab823ccdbf4590d96275c452d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ninja/Ninja muerte 74x62.png"
-dest_files=["res://.godot/imported/Ninja muerte 74x62.png-03f689891345c5a35392072c2b90ecc5.ctex"]
+source_file="res://Sprites/Ninja/NinjaSmokeBomb.png"
+dest_files=["res://.godot/imported/NinjaSmokeBomb.png-b96e421ab823ccdbf4590d96275c452d.ctex"]
 
 [params]
 

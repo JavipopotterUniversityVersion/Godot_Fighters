@@ -6,7 +6,7 @@ func enter() -> void:
 	_damaged = true
 	entity.animation_player.play(PAIN, -1, 1.5)
 	Camera.shake_camera(1.035, Vector2(15,15))
-	entity.animation_player.animation_finished.connect(func(_anim): _damaged = false)
+	entity.animation_player.animation_finished.connect(func(_anim): _damaged = false, 4)
 
 func process_frame(delta:float) -> State:
 	if not _damaged: return idle_state

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://h8pmpywb02iw"
-path="res://.godot/imported/ninjaAgarre.png-0c5d68530ad64725112d325e61c9cb31.ctex"
+path="res://.godot/imported/NinjaGrab.png-7ba415e34d425c20c271f81fae62d319.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ninja/ninjaAgarre.png"
-dest_files=["res://.godot/imported/ninjaAgarre.png-0c5d68530ad64725112d325e61c9cb31.ctex"]
+source_file="res://Sprites/Ninja/NinjaGrab.png"
+dest_files=["res://.godot/imported/NinjaGrab.png-7ba415e34d425c20c271f81fae62d319.ctex"]
 
 [params]
 

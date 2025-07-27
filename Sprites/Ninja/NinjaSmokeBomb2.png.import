@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tclnmwnu32ls"
-path="res://.godot/imported/thumbnail_ninja cansado 62x62.png-876c30e8a425f6951bd2cbd18044fef8.ctex"
+uid="uid://deqkqg6hfxen4"
+path="res://.godot/imported/NinjaSmokeBomb2.png-952d015ebfa989a012dc83e7e2c8c7e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ninja/thumbnail_ninja cansado 62x62.png"
-dest_files=["res://.godot/imported/thumbnail_ninja cansado 62x62.png-876c30e8a425f6951bd2cbd18044fef8.ctex"]
+source_file="res://Sprites/Ninja/NinjaSmokeBomb2.png"
+dest_files=["res://.godot/imported/NinjaSmokeBomb2.png-952d015ebfa989a012dc83e7e2c8c7e4.ctex"]
 
 [params]
 

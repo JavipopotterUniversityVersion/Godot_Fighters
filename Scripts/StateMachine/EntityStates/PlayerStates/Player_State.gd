@@ -7,11 +7,12 @@ var _last_pressed:String
 const WALK:String = "Walk"
 const PUNCH:String = "Punch"
 const KICK:String = "Kick"
+const FINAL_KICK:String = "Final_Kick"
 const JUMP_KICK:String = "Jump_Kick"
 const JUMP:String = "Jump"
 const FALL:String = "Fall"
-const TRY_GRAB:String = "Try_Grab"
 const GRAB:String = "Grab"
+const GRAB_WALK:String = "Grab_Walk"
 
 #States
 @onready var walk_state:PlayerState = get_parent().walk_state
@@ -20,6 +21,7 @@ const GRAB:String = "Grab"
 @onready var punch_state:PlayerState = get_parent().punch_state
 @onready var jump_kick_state:PlayerState = get_parent().jump_kick_state
 @onready var grab_state:PlayerState = get_parent().grab_state
+@onready var grabbing_state:PlayerState = get_parent().grabbing_state
 
 #Input Keys
 var movement_key:String = "Movement"

@@ -362,6 +362,9 @@ position = Vector2(1.33333, -2.38419e-07)
 scale = Vector2(0.0963541, 0.0208333)
 texture = ExtResource("22_h53l3")
 
+[node name="GrabPivot" type="Node2D" parent="."]
+position = Vector2(-3.66667, -33.6667)
+
 [connection signal="on_die" from="HealthHandler" to="SubBody/StateMachine" method="die"]
 [connection signal="on_get_damage" from="HealthHandler" to="SubBody/StateMachine" method="get_damage"]
 [connection signal="on_dead" from="SubBody/StateMachine/DeadState" to="." method="disable"]

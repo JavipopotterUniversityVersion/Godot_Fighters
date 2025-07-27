@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmefeetqct7q7"
-path="res://.godot/imported/bombaHumo.png-2f041489974f786f55efa0d14c5736a4.ctex"
+uid="uid://bvcp5b8duaj2r"
+path="res://.godot/imported/NinjaSpriteSheet.png-59b74f88f75bcd5d959463a08f52a025.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ninja/bombaHumo.png"
-dest_files=["res://.godot/imported/bombaHumo.png-2f041489974f786f55efa0d14c5736a4.ctex"]
+source_file="res://Sprites/Ninja/NinjaSpriteSheet.png"
+dest_files=["res://.godot/imported/NinjaSpriteSheet.png-59b74f88f75bcd5d959463a08f52a025.ctex"]
 
 [params]
 

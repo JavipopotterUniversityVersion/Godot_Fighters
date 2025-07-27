@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drv1rilo4wi54"
-path="res://.godot/imported/thumbnail_ninja jump 2 62x62.png-27e5dfe346b0cbe1dcf64f4e7f66879b.ctex"
+uid="uid://tclnmwnu32ls"
+path="res://.godot/imported/NinjaExhausted.png-314a80bafc245b0d5888ca518c89537e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ninja/thumbnail_ninja jump 2 62x62.png"
-dest_files=["res://.godot/imported/thumbnail_ninja jump 2 62x62.png-27e5dfe346b0cbe1dcf64f4e7f66879b.ctex"]
+source_file="res://Sprites/Ninja/NinjaExhausted.png"
+dest_files=["res://.godot/imported/NinjaExhausted.png-314a80bafc245b0d5888ca518c89537e.ctex"]
 
 [params]
 

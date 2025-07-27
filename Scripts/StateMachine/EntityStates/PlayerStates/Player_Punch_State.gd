@@ -2,7 +2,7 @@ class_name PlayerPunchState
 extends PlayerState
 
 var _has_attacked:bool
-var combo:Array = [PUNCH, KICK]
+var combo:Array = [PUNCH, KICK, FINAL_KICK]
 var combo_index:int = 0
 var next_state:PlayerState = idle_state
 
@@ -11,11 +11,11 @@ func enter() -> void:
 	_has_attacked = true
 	entity.velocity.x = 0
 	
+	entity.animation_player.animation_finished.connect(func(_anim): _has_attacked = false, 4)
 	entity.animation_player.play(combo[combo_index], -1, 0.85)
 	combo_index += 1
 	
 	if combo_index >= combo.size(): combo_index = 0
-	entity.animation_player.animation_finished.connect(func(_anim): _has_attacked = false)
 
 func process_frame(delta:float) -> State:
 	super(delta)

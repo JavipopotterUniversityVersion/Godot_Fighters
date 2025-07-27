@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deqkqg6hfxen4"
-path="res://.godot/imported/ninjasmoke2.png-943f0930dc12db35e2a469eaf67bbd37.ctex"
+uid="uid://dr87wwdiq846t"
+path="res://.godot/imported/NinjaSmoke3.png-d00f2be99f6d3b4556fd7a8ade135e28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ninja/ninjasmoke2.png"
-dest_files=["res://.godot/imported/ninjasmoke2.png-943f0930dc12db35e2a469eaf67bbd37.ctex"]
+source_file="res://Sprites/Ninja/NinjaSmoke3.png"
+dest_files=["res://.godot/imported/NinjaSmoke3.png-d00f2be99f6d3b4556fd7a8ade135e28.ctex"]
 
 [params]
 
