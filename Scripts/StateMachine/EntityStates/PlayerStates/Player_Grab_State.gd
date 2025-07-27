@@ -5,7 +5,7 @@ extends PlayerState
 @onready var _grab_area:Area2D = $"GrabArea"
 
 var _grabbed_entity:EntityHandler = null
-const GRAB_THRESHOLD = 12
+const GRAB_THRESHOLD = 4
 const SEA_HEIGHT = -221
 
 var _executed:bool
@@ -29,23 +29,24 @@ func exit() -> void:
 func process_frame(delta:float) -> State:
 	if _executed:
 		return idle_state
-	else: if _grabbed_entity != null:
-		_grabbed_entity.global_position = _grab_area.global_position
-		var tween = TweensDataBase.get_tween("arc_go_to")
-		tween.call({
-			"object": _grabbed_entity,
-			"pos": Vector2(_grab_area.global_position.x, SEA_HEIGHT),
-			"duration": 1,
-			"call_back": func():
-				pass
-				_grabbed_entity.disable()
-		})
 	return null
 
 func on_area_entered(hurt_box:HurtBox) -> void:
 	if hurt_box == null: return
 	if (_tag_data.get_target_tags().has(hurt_box.get_tag()) 
-	and hurt_box.get_health_handler()._current_health < GRAB_THRESHOLD):
+	and hurt_box.get_health_handler()._current_health < GRAB_THRESHOLD
+	and  _grabbed_entity == null):
 		entity.animation_player.play(GRAB)
 		_grabbed_entity = hurt_box.entity
 		_grabbed_entity.state_machine.change_state_name_input("GrabbedState")
+		
+		_grabbed_entity.global_position = _grab_area.global_position
+		var tween = TweensDataBase.get_tween("arc_go_to")
+		tween.call({
+			"object": _grabbed_entity,
+			"pos": Vector2(_grab_area.global_position.x, SEA_HEIGHT),
+			"duration": 0.5,
+			"call_back": func():
+				_grabbed_entity.disable()
+				_grabbed_entity = null
+		})

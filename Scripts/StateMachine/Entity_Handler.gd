@@ -14,5 +14,5 @@ func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 
 func disable():
-	visible = false
-	set_process(false)
+	print("callback")
+	queue_free()

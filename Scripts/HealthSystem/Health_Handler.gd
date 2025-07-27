@@ -13,3 +13,9 @@ func get_damage(damage:float):
 	
 	if _current_health > 0: emit_signal("on_get_damage", damage)
 	else: emit_signal("on_die")
+
+func get_health() -> float:
+	return _current_health
+
+func get_max_health() -> float:
+	return _max_health
