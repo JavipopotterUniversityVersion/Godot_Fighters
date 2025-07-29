@@ -8,12 +8,23 @@ var cur_offset:Vector2 = INIT_OFFSET
 
 var shake_recov_factor:float = 1
 var zoom_recov_factor:float = 6
+var _follow:bool = true
+
+@onready var target:Node2D = get_tree().get_first_node_in_group("Players")
+
+func activate_front_wall():
+	_follow = false
+
+func deactivate_front_wall():
+	_follow = true
 
 func _ready():
 	zoom = INIT_ZOOM
 	offset = INIT_OFFSET
+	make_current()
 
-func _process(delta:float):
+func _process(delta: float) -> void:
+	follow_target()
 	recover_zoom(delta)
 	recover_offset_and_shake(delta)
 
@@ -22,6 +33,10 @@ func recover_offset_and_shake(delta:float) -> void:
 	cur_offset.x = randf_range(cur_offset.x * -1, cur_offset.x * 1)
 	cur_offset.y = randf_range(cur_offset.y * -1, cur_offset.y * 1)
 	offset = cur_offset
+
+func follow_target():
+	if target and _follow:
+		global_position.x = target.global_position.x
 
 func recover_zoom(delta:float):
 	cur_zoom = lerp(cur_zoom, INIT_ZOOM, zoom_recov_factor * delta)

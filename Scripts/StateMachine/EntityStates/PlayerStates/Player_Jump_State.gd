@@ -4,9 +4,12 @@ extends PlayerState
 const JUMP_FORCE:float = -2000
 const AIR_SPEED:float = 400
 
+@export var _hit_box:CollisionShape2D
+
 func enter() -> void:
 	subBody.velocity.y = JUMP_FORCE
 	entity.animation_player.play(JUMP)
+	_hit_box.disabled = true
 
 func process_physics(delta: float) -> State:
 	move(get_move_dir())

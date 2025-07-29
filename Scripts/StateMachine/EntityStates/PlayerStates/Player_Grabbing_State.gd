@@ -7,16 +7,22 @@ var _entity_grab_pivot:Node2D
 
 const SEA_HEIGHT = -221
 const SPEED:float = 300
-var flipped:bool = false
+var _thrown:bool = false
 
 func enter() -> void:
 	super()
+	_thrown = false
 	_entity_grab_pivot = _grabbed_entity.get_node("GrabPivot")
 	entity.animation_player.play(GRAB_WALK)
 	entity.animation_player.speed_scale = 0
+	
 
 func exit() -> void:
 	entity.animation_player.speed_scale = 1
+	if not _thrown:
+		_grabbed_entity.state_machine.reset()
+		_grabbed_entity.flipped = entity.flipped
+		_grabbed_entity = null
 
 func process_input(event:InputEvent) -> State:
 	super(event)
@@ -28,25 +34,31 @@ func process_input(event:InputEvent) -> State:
 	return null
 
 func process_frame(delta:float) -> State:
-	_grabbed_entity.global_position = _grab_area.global_position - _entity_grab_pivot.position * _grabbed_entity.scale.x
+	if _grabbed_entity:
+		if not entity.flipped: _grabbed_entity.global_position.x = _grab_area.global_position.x - _entity_grab_pivot.position.x * abs(_grabbed_entity.scale.x)
+		else: _grabbed_entity.global_position.x = _grab_area.global_position.x + _entity_grab_pivot.position.x * abs(_grabbed_entity.scale.x)
+		_grabbed_entity.global_position.y = _grab_area.global_position.y - _entity_grab_pivot.position.y * abs(_grabbed_entity.scale.x)
 	
-	if get_move_dir().x == 0: entity.animation_player.speed_scale = 0
+	if get_move_dir() == Vector2.ZERO: entity.animation_player.speed_scale = 0
 	else: entity.animation_player.speed_scale = 1
 	
-	if (get_move_dir().x > 0 and flipped) or (get_move_dir().x < 0 and not flipped):
-		flipped = not flipped
+	if (get_move_dir().x > 0 and entity.flipped) or (get_move_dir().x < 0 and not entity.flipped):
+		entity.flipped = not entity.flipped
 		entity.scale.x = -3
+		_grabbed_entity.scale.x = -_grabbed_entity.scale.x 
 	return null
 
 func throw_entity():
+	_thrown = true
 	_grabbed_entity.global_position = _grab_area.global_position
 	var tween = TweensDataBase.get_tween("arc_go_to")
 	tween.call({
 		"object": _grabbed_entity,
 		"pos": Vector2(_grab_area.global_position.x, SEA_HEIGHT),
 		"duration": 1,
+		"final_size": 0.8,
 		"call_back": func():
-			_grabbed_entity.disable()
+			_grabbed_entity.animation_player.play("Shark_Eaten")
 			_grabbed_entity = null
 	})
 	return idle_state

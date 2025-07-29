@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://fjj5wb8cdw62"]
+
+[ext_resource type="StyleBox" uid="uid://h3ca2bwu21si" path="res://Styles/LifeBarBackground.tres" id="1_kogox"]
+[ext_resource type="StyleBox" uid="uid://cw5muc14b0ewa" path="res://Styles/LifeBarFill.tres" id="2_dahsi"]
+[ext_resource type="Script" path="res://Scripts/HealthSystem/Life_Bar.gd" id="3_l8v0l"]
+[ext_resource type="FontFile" uid="uid://cges86te0bsmq" path="res://Fonts/ARCADE_N.TTF" id="4_a5q6f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0n2s0"]
+font = ExtResource("4_a5q6f")
+font_size = 45
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchor_left = -0.498
+anchor_top = -0.499
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -493.0
+offset_top = -359.0
+offset_right = -492.44
+offset_bottom = -359.0
+
+[node name="LifeBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 85.0
+offset_right = 632.0
+offset_bottom = 129.0
+theme_override_styles/background = ExtResource("1_kogox")
+theme_override_styles/fill = ExtResource("2_dahsi")
+value = 100.0
+show_percentage = false
+script = ExtResource("3_l8v0l")
+_dissapears = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 11.0
+offset_right = 630.0
+offset_bottom = 74.0
+text = "HAYASUBA"
+label_settings = SubResource("LabelSettings_0n2s0")

@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://b6uors1tyxdhl"]
+
+[ext_resource type="PackedScene" uid="uid://fjj5wb8cdw62" path="res://Prefabs/ui.tscn" id="1_44svm"]
+[ext_resource type="Texture2D" uid="uid://grra87pavo6i" path="res://Sprites/sand.png" id="1_661nn"]
+[ext_resource type="PackedScene" uid="uid://cd4e6adffvw3r" path="res://Prefabs/player_2d.tscn" id="3_dayqq"]
+[ext_resource type="Script" path="res://Scripts/Enemy_Spawner.gd" id="5_vdpej"]
+[ext_resource type="Texture2D" uid="uid://bcurkp05de4je" path="res://Sprites/scanlines-fade-1920x1080-5x-ver1.png" id="5_x0oa2"]
+[ext_resource type="PackedScene" uid="uid://du672cqecnexl" path="res://Prefabs/hockey.tscn" id="6_lqbo7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mksad"]
+size = Vector2(1378, 199)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t807g"]
+size = Vector2(1389, 354.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4uc47"]
+size = Vector2(1441, 354)
+
+[node name="GameScene" type="Node"]
+
+[node name="Game" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Scanlines" type="Sprite2D" parent="Game"]
+modulate = Color(1, 1, 1, 0.0313726)
+z_index = 10
+position = Vector2(10, -24)
+scale = Vector2(0.811111, 0.811111)
+texture = ExtResource("5_x0oa2")
+
+[node name="Sand" type="Sprite2D" parent="Game"]
+z_index = -1
+position = Vector2(50, -191)
+scale = Vector2(4, 4)
+texture = ExtResource("1_661nn")
+
+[node name="down_wall" type="StaticBody2D" parent="Game"]
+position = Vector2(-94, 438)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/down_wall"]
+position = Vector2(103, -3.5)
+shape = SubResource("RectangleShape2D_mksad")
+one_way_collision_margin = 0.0
+
+[node name="up_wall" type="StaticBody2D" parent="Game"]
+position = Vector2(-110, -58)
+collision_layer = 5
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/up_wall"]
+position = Vector2(77, -101.75)
+shape = SubResource("RectangleShape2D_t807g")
+
+[node name="Player2D" parent="Game" instance=ExtResource("3_dayqq")]
+position = Vector2(-402, 161)
+
+[node name="EnemyArea" type="Area2D" parent="Game"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_vdpej")
+_enemies = Array[PackedScene]([ExtResource("6_lqbo7")])
+_waves = 2
+_enemies_per_wave = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/EnemyArea"]
+position = Vector2(-20.5, 167)
+shape = SubResource("RectangleShape2D_4uc47")
+debug_color = Color(0.875175, 0.272985, 0.540947, 0.42)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("1_44svm")]
+offset_left = -32.56
+offset_top = 18.28
+offset_right = -30.0
+offset_bottom = 19.0
+
+[editable path="CanvasLayer/UI"]

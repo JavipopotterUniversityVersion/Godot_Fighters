@@ -2,7 +2,6 @@ class_name PlayerWalkingState
 extends PlayerState
 
 const SPEED:float = 400
-var flipped:bool = false
 
 func enter() -> void:
 	super()
@@ -10,8 +9,8 @@ func enter() -> void:
 
 func process_frame(delta:float) -> State:
 	
-	if (get_move_dir().x > 0 and flipped) or (get_move_dir().x < 0 and not flipped):
-		flipped = not flipped
+	if (get_move_dir().x > 0 and entity.flipped) or (get_move_dir().x < 0 and not entity.flipped):
+		entity.flipped = not entity.flipped
 		entity.scale.x = -3
 			
 	return null

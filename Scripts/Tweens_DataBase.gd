@@ -23,12 +23,16 @@ var tweens = {
 			var end_pos: Vector2 = context.pos
 			var height_offset: float = 90.0  # altura del arco (ajústalo a gusto)
 			var duration: float = context.duration
+			var final_size:Vector2 = context.final_size * object.scale
+			var original_size:Vector2 = object.scale
 
 			var tween: Tween = object.create_tween()
 
 			tween.tween_method(func(t):
 				var curved_pos = start_pos.lerp(end_pos, t)
-				curved_pos.y += height_offset * sin(PI * t)
+				object.scale.x = lerp(original_size.x, final_size.x, t)
+				object.scale.y = lerp(original_size.y, final_size.y, t)
+				curved_pos.y -= height_offset * sin(PI * t)
 				object.global_position = curved_pos
 			, 0.0, 1.0, duration)
 

@@ -8,27 +8,33 @@
 
 config_version=5
 
+[animation]
+
+warnings/check_invalid_track_paths=false
+
 [application]
 
 config/name="Godot_Fighters"
-run/main_scene="res://Scenes/prototype_scene.tscn"
+run/main_scene="res://Scenes/GameScene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Camera="*res://Scripts/Camera.gd"
 HitStopManager="*res://Scripts/Hit_Stop_Manager.gd"
 TweensDataBase="*res://Scripts/Tweens_DataBase.gd"
+SceneManager="*res://addons/scene_manager/SceneManager.tscn"
+Camera="*res://Prefabs/camera.tscn"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
 
 [global_group]
 

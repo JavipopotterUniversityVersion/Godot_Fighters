@@ -1,10 +1,14 @@
 class_name PlayerFallState
 extends PlayerState
 const AIR_SPEED:float = 400
+@export var _hit_box:CollisionShape2D
 
 func enter() -> void:
 	super()
 	entity.animation_player.play(FALL)
+
+func exit() -> void:
+	_hit_box.disabled = false
 
 func process_physics(delta: float) -> State:
 	move(get_move_dir().x)
