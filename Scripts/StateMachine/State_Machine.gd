@@ -24,6 +24,8 @@ func reset():
 func change_state(new_state:State):
 	if _current_state:
 		_current_state.exit()
+		_handler.animation_player.play(&"RESET")
+		_handler.animation_player.advance(0)
 	_current_state = new_state
 	new_state.enter()
 

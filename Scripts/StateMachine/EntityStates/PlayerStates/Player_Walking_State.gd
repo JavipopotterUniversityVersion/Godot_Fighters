@@ -28,7 +28,9 @@ func process_input(event:InputEvent):
 	
 	if event.is_action_pressed(jump_key): return jump_state
 	if event.is_action_pressed(punch_key): return punch_state
-	if event.is_action_pressed(grab_key): return grab_state
+	if event.is_action_pressed(grab_key): 
+		if not (entity as PlayerHandler).try_get_item():
+			return grab_state
 
 	return null
 

@@ -321,6 +321,7 @@ texture = ExtResource("31_k6uka")
 libraries = {
 "": SubResource("AnimationLibrary_m5r8h")
 }
+autoplay = "Blink"
 
 [connection signal="on_die" from="HealthHandler" to="SubBody/StateMachine" method="die"]
 [connection signal="on_die" from="HealthHandler" to="GPUParticles2D" method="emit"]

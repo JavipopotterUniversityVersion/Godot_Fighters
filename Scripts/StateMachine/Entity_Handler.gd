@@ -11,6 +11,7 @@ var _stop:bool
 var flipped:bool
 
 func change_animator(animator_name:String):
+	animation_player.stop()
 	animation_player = get_node(animator_name)
 
 func _ready() -> void: 

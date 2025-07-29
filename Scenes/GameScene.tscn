@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6uors1tyxdhl"]
+[gd_scene load_steps=11 format=3 uid="uid://b6uors1tyxdhl"]
 
 [ext_resource type="PackedScene" uid="uid://fjj5wb8cdw62" path="res://Prefabs/ui.tscn" id="1_44svm"]
 [ext_resource type="Texture2D" uid="uid://grra87pavo6i" path="res://Sprites/sand.png" id="1_661nn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemy_Spawner.gd" id="5_vdpej"]
 [ext_resource type="Texture2D" uid="uid://bcurkp05de4je" path="res://Sprites/scanlines-fade-1920x1080-5x-ver1.png" id="5_x0oa2"]
 [ext_resource type="PackedScene" uid="uid://du672cqecnexl" path="res://Prefabs/hockey.tscn" id="6_lqbo7"]
+[ext_resource type="PackedScene" uid="uid://b1fpbxl3fv18k" path="res://Prefabs/sign.tscn" id="7_m7wtv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mksad"]
 size = Vector2(5088, 199)
@@ -104,5 +105,8 @@ offset_left = 1135.44
 offset_top = 194.28
 offset_right = 1311.44
 offset_bottom = 240.28
+
+[node name="Area2D" parent="." instance=ExtResource("7_m7wtv")]
+position = Vector2(-142, 157)
 
 [editable path="CanvasLayer/UI"]

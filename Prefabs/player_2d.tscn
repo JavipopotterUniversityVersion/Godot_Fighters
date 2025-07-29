@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cd4e6adffvw3r"]
+[gd_scene load_steps=35 format=3 uid="uid://cd4e6adffvw3r"]
 
 [ext_resource type="Script" path="res://Scripts/Player_Handler.gd" id="1_anti4"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/EntityStates/PlayerStates/Player_State_Machine.gd" id="3_4t2rv"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://0fgvtevdlgje" path="res://Sprites/Circle.png" id="15_x1xhc"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/EntityStates/Dead_State.gd" id="16_du460"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/EntityStates/PlayerStates/Player_Grabbing_State.gd" id="16_w5gy0"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/EntityStates/PlayerStates/Player_Get_Item_State.gd" id="16_ww5vp"]
 [ext_resource type="AnimationLibrary" uid="uid://3ho03ksdcxo8" path="res://Animations/ninja_animations_sign.res" id="17_v6vyr"]
 [ext_resource type="AnimationLibrary" uid="uid://dtdsdhkfexukw" path="res://Animations/ninja_animations.res" id="17_xdsnc"]
 [ext_resource type="Script" path="res://Scripts/Scene_Reloader.gd" id="23_7voy0"]
@@ -108,6 +109,9 @@ _data = {
 "RESET": SubResource("Animation_cyp7w")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1l5pq"]
+size = Vector2(52.6667, 56.5)
+
 [node name="Player2D" type="CharacterBody2D" node_paths=PackedStringArray("state_machine") groups=["Players"]]
 position = Vector2(-408, 58)
 scale = Vector2(3, 3)
@@ -118,7 +122,7 @@ state_machine = NodePath("SubBody/StateMachine")
 
 [node name="SubBody" type="CharacterBody2D" parent="."]
 
-[node name="StateMachine" type="Node2D" parent="SubBody" node_paths=PackedStringArray("walk_state", "jump_state", "fall_state", "punch_state", "jump_kick_state", "grab_state", "grabbing_state", "idle_state", "pain_state", "dead_state", "_inital_state", "_handler")]
+[node name="StateMachine" type="Node2D" parent="SubBody" node_paths=PackedStringArray("walk_state", "jump_state", "fall_state", "punch_state", "jump_kick_state", "grab_state", "grabbing_state", "get_item_state", "idle_state", "pain_state", "dead_state", "_inital_state", "_handler")]
 script = ExtResource("3_4t2rv")
 walk_state = NodePath("Walk")
 jump_state = NodePath("Jump")
@@ -127,6 +131,7 @@ punch_state = NodePath("Attack")
 jump_kick_state = NodePath("Jump-Kick")
 grab_state = NodePath("PlayerGrabState")
 grabbing_state = NodePath("PlayerGrabbingState")
+get_item_state = NodePath("PlayerGetItemState")
 idle_state = NodePath("Idle")
 pain_state = NodePath("Pain")
 dead_state = NodePath("DeadState")
@@ -222,6 +227,7 @@ _health_handler = NodePath("../../../../HealthHandler")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubBody/StateMachine/Pain/HurtBox"]
 position = Vector2(0, -20.6667)
 shape = SubResource("RectangleShape2D_l3ruj")
+disabled = true
 debug_color = Color(0.843256, 0, 0.188319, 0.42)
 
 [node name="PlayerGrabState" type="Node2D" parent="SubBody/StateMachine"]
@@ -244,16 +250,16 @@ position = Vector2(9, -39.6667)
 [node name="DeadState" type="Node2D" parent="SubBody/StateMachine"]
 script = ExtResource("16_du460")
 
+[node name="PlayerGetItemState" type="Node2D" parent="SubBody/StateMachine"]
+script = ExtResource("16_ww5vp")
+
 [node name="Sprite2D" type="Sprite2D" parent="SubBody"]
 position = Vector2(-0.666667, -1.33333)
-scale = Vector2(0.77, 0.81)
+scale = Vector2(0.77, 0.77)
 texture = ExtResource("3_hbfxk")
 offset = Vector2(3, -26)
 region_enabled = true
 region_rect = Rect2(143, 694, 35, 50)
-
-[node name="HealthHandler" type="Node" parent="."]
-script = ExtResource("12_l7olr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.833344, -1.66667)
@@ -270,19 +276,30 @@ texture = ExtResource("15_x1xhc")
 libraries = {
 "": SubResource("AnimationLibrary_m5r8h")
 }
+autoplay = "Blink"
 
-[node name="SceneReloader" type="Node" parent="."]
-script = ExtResource("23_7voy0")
+[node name="InteractionArea" type="Area2D" parent="."]
 
-[node name="Animation" type="AnimationPlayer" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(27.6667, -31.25)
+shape = SubResource("RectangleShape2D_1l5pq")
+debug_color = Color(0, 0.65098, 0.0745098, 0.129412)
+
+[node name="Animation_Sign" type="AnimationPlayer" parent="."]
 libraries = {
 "": ExtResource("17_v6vyr")
 }
 
-[node name="Animation_" type="AnimationPlayer" parent="."]
+[node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
 "": ExtResource("17_xdsnc")
 }
+
+[node name="HealthHandler" type="Node" parent="."]
+script = ExtResource("12_l7olr")
+
+[node name="SceneReloader" type="Node" parent="."]
+script = ExtResource("23_7voy0")
 
 [connection signal="on_disable" from="." to="SceneReloader" method="reload_scene"]
 [connection signal="on_dead" from="SubBody/StateMachine/DeadState" to="." method="disable"]

@@ -14,16 +14,13 @@ func process_frame(delta:float) -> State:
 		return fall_state
 	return null
 
-func exit():
-	entity.animation_player.play("RESET")
-
 func process_physics(delta:float) -> State:
 	move(get_move_dir().x)
 	entity.move_and_slide()
 
 	if subBody.position.y >= 0:
 		subBody.position.y = 0
-		entity.animation_player.play("RESET")
+		entity.animation_player.play(&"RESET")
 	else:	
 		subBody.velocity.y += gravity * delta
 		subBody.move_and_slide()
