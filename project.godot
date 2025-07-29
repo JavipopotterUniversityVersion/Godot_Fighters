@@ -25,6 +25,7 @@ HitStopManager="*res://Scripts/Hit_Stop_Manager.gd"
 TweensDataBase="*res://Scripts/Tweens_DataBase.gd"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 Camera="*res://Prefabs/camera.tscn"
+GlobalSignals="*res://Scripts/Global_Signals.gd"
 
 [display]
 

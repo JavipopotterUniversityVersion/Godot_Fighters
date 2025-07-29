@@ -14,15 +14,19 @@ func on_area_entered(hurt_box:HurtBox) -> void:
 	if hurt_box == null: return
 	if (hurt_box.get_tag() != "Player"): return
 	
-	Camera.activate_front_wall()
 	area_entered.disconnect(on_area_entered)
 	spawn_waves()
 
 func spawn_waves() -> void:
+	Camera.activate_front_wall()
+	GlobalSignals.on_enemies_appeared.emit()
+	
 	for wave in range(_waves):
 		for i in range(_enemies_per_wave):
 			spawn_enemy_at_border()
 		await next_wave
+		
+	GlobalSignals.on_enemies_defeated.emit()
 	Camera.deactivate_front_wall()
 
 func spawn_enemy_at_border() -> void:
@@ -40,12 +44,14 @@ func spawn_enemy_at_border() -> void:
 func _substract_enemy():
 	_enemy_count -= 1
 	if _enemy_count <= 0:
-		emit_signal("next_wave")
+		next_wave.emit()
 
 func get_random_border_position() -> Vector2:
-	var shape := $CollisionShape2D.shape as RectangleShape2D
-	var size = shape.extents * 2
-	var top_left = global_position - shape.extents
+	var viewport := get_viewport()
+	var camera := viewport.get_camera_2d()
+
+	var screen_size := viewport.get_visible_rect().size
+	var screen_position := camera.get_screen_center_position() - screen_size / 2
 
 	var side := randi() % 3
 	var x: float
@@ -53,13 +59,13 @@ func get_random_border_position() -> Vector2:
 
 	match side:
 		0: # bottom
-			x = randf_range(0, size.x)
-			y = size.y
+			x = randf_range(0, screen_size.x)
+			y = screen_size.y
 		1: # left
 			x = 0
-			y = randf_range(0, size.y)
+			y = randf_range(0, screen_size.y)
 		2: # right
-			x = size.x
-			y = randf_range(0, size.y)
+			x = screen_size.x
+			y = randf_range(0, screen_size.y)
 
-	return top_left + Vector2(x, y)
+	return screen_position + Vector2(x, y)
