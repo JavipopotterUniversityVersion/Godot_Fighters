@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cd4e6adffvw3r"]
+[gd_scene load_steps=33 format=3 uid="uid://cd4e6adffvw3r"]
 
 [ext_resource type="Script" path="res://Scripts/Player_Handler.gd" id="1_anti4"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/EntityStates/PlayerStates/Player_State_Machine.gd" id="3_4t2rv"]
@@ -28,8 +28,14 @@ size = Vector2(25.6667, 53.6667)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3mif"]
 size = Vector2(43.6667, 27)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1sr1"]
+size = Vector2(44.8334, 22.1666)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7f6b"]
 size = Vector2(30.4167, 51.4167)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vk73l"]
+size = Vector2(42, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3ruj"]
 size = Vector2(8.33332, 35.75)
@@ -112,14 +118,6 @@ state_machine = NodePath("SubBody/StateMachine")
 
 [node name="SubBody" type="CharacterBody2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="SubBody"]
-position = Vector2(-0.666667, -1.33333)
-scale = Vector2(0.77, 0.77)
-texture = ExtResource("3_hbfxk")
-offset = Vector2(3, -26)
-region_enabled = true
-region_rect = Rect2(143, 694, 35, 50)
-
 [node name="StateMachine" type="Node2D" parent="SubBody" node_paths=PackedStringArray("walk_state", "jump_state", "fall_state", "punch_state", "jump_kick_state", "grab_state", "grabbing_state", "idle_state", "pain_state", "dead_state", "_inital_state", "_handler")]
 script = ExtResource("3_4t2rv")
 walk_state = NodePath("Walk")
@@ -174,6 +172,18 @@ shape = SubResource("RectangleShape2D_x3mif")
 disabled = true
 debug_color = Color(0.576816, 0.545906, 0.259479, 0.42)
 
+[node name="SignAttack" type="Area2D" parent="SubBody/StateMachine/Attack"]
+script = ExtResource("9_skv31")
+_tag_data = ExtResource("10_crje6")
+_damage = 5
+_knock_back = 400
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubBody/StateMachine/Attack/SignAttack"]
+position = Vector2(35.25, -23.75)
+shape = SubResource("RectangleShape2D_g1sr1")
+disabled = true
+debug_color = Color(0.576816, 0.545906, 0.259479, 0.42)
+
 [node name="Jump-Kick" type="Node2D" parent="SubBody/StateMachine"]
 script = ExtResource("9_tmntc")
 
@@ -181,11 +191,23 @@ script = ExtResource("9_tmntc")
 script = ExtResource("9_skv31")
 _tag_data = ExtResource("10_crje6")
 _damage = 5
-_knock_back = 600
+_knock_back = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubBody/StateMachine/Jump-Kick/Air_Kick"]
 position = Vector2(18.3333, -32)
 shape = SubResource("RectangleShape2D_c7f6b")
+disabled = true
+debug_color = Color(0.854128, 0.360551, 0.208889, 0.42)
+
+[node name="Air_Sign" type="Area2D" parent="SubBody/StateMachine/Jump-Kick"]
+script = ExtResource("9_skv31")
+_tag_data = ExtResource("10_crje6")
+_damage = 7
+_knock_back = 600
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubBody/StateMachine/Jump-Kick/Air_Sign"]
+position = Vector2(35, -23.3333)
+shape = SubResource("RectangleShape2D_vk73l")
 disabled = true
 debug_color = Color(0.854128, 0.360551, 0.208889, 0.42)
 
@@ -222,6 +244,14 @@ position = Vector2(9, -39.6667)
 [node name="DeadState" type="Node2D" parent="SubBody/StateMachine"]
 script = ExtResource("16_du460")
 
+[node name="Sprite2D" type="Sprite2D" parent="SubBody"]
+position = Vector2(-0.666667, -1.33333)
+scale = Vector2(0.77, 0.81)
+texture = ExtResource("3_hbfxk")
+offset = Vector2(3, -26)
+region_enabled = true
+region_rect = Rect2(143, 694, 35, 50)
+
 [node name="HealthHandler" type="Node" parent="."]
 script = ExtResource("12_l7olr")
 
@@ -244,12 +274,12 @@ libraries = {
 [node name="SceneReloader" type="Node" parent="."]
 script = ExtResource("23_7voy0")
 
-[node name="Animation_Sign" type="AnimationPlayer" parent="."]
+[node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
 "": ExtResource("17_v6vyr")
 }
 
-[node name="Animation" type="AnimationPlayer" parent="."]
+[node name="Animation_" type="AnimationPlayer" parent="."]
 libraries = {
 "": ExtResource("17_xdsnc")
 }

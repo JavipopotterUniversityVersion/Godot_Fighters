@@ -70,12 +70,11 @@ shape = SubResource("RectangleShape2D_4uc47")
 debug_color = Color(0.875175, 0.272985, 0.540947, 0.42)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("1_44svm")]
-offset_left = -32.56
-offset_top = 18.28
-offset_right = -30.0
-offset_bottom = 19.0
+offset_left = 637.44
+offset_top = 359.28
+offset_right = 640.0
+offset_bottom = 360.0
 
 [editable path="CanvasLayer/UI"]
