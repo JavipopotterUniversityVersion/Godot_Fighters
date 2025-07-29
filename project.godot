@@ -26,6 +26,7 @@ TweensDataBase="*res://Scripts/Tweens_DataBase.gd"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 Camera="*res://Prefabs/camera.tscn"
 GlobalSignals="*res://Scripts/Global_Signals.gd"
+GameManager="*res://Scripts/Game_Manager.gd"
 
 [display]
 

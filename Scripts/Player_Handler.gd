@@ -8,6 +8,7 @@ func _ready() -> void:
 	super()
 	interaction_area.area_entered.connect(on_interaction_area_entered)
 	interaction_area.area_exited.connect(on_interaction_area_exited)
+	GameManager.time_out.connect(func(): health_handler.die())
 
 func on_interaction_area_entered(item:Generic_Item) -> void:
 	_current_item = item

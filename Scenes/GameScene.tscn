@@ -100,12 +100,6 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Go!" parent="CanvasLayer/UI" index="2"]
-offset_left = 1135.44
-offset_top = 194.28
-offset_right = 1311.44
-offset_bottom = 240.28
-
 [node name="Area2D" parent="." instance=ExtResource("7_m7wtv")]
 position = Vector2(-142, 157)
 

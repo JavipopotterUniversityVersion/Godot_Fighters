@@ -12,7 +12,10 @@ func get_damage(damage:float):
 	_current_health = clampf(_current_health, 0, _max_health)
 	
 	if _current_health > 0: emit_signal("on_get_damage", damage)
-	else: emit_signal("on_die")
+	else: die()
+
+func die():
+	emit_signal("on_die")
 
 func get_health() -> float:
 	return _current_health

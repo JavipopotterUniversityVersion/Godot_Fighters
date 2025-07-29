@@ -35,7 +35,7 @@ func recover_offset_and_shake(delta:float) -> void:
 	offset = cur_offset
 
 func follow_target():
-	if target and _follow:
+	if target != null and _follow:
 		global_position.x = target.global_position.x
 
 func recover_zoom(delta:float):

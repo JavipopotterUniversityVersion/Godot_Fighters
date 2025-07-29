@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://fjj5wb8cdw62"]
+[gd_scene load_steps=14 format=3 uid="uid://fjj5wb8cdw62"]
 
 [ext_resource type="StyleBox" uid="uid://h3ca2bwu21si" path="res://Styles/LifeBarBackground.tres" id="1_kogox"]
 [ext_resource type="StyleBox" uid="uid://cw5muc14b0ewa" path="res://Styles/LifeBarFill.tres" id="2_dahsi"]
 [ext_resource type="Script" path="res://Scripts/HealthSystem/Life_Bar.gd" id="3_l8v0l"]
 [ext_resource type="FontFile" uid="uid://cges86te0bsmq" path="res://Fonts/ARCADE_N.TTF" id="4_a5q6f"]
 [ext_resource type="Script" path="res://Scripts/Feedback/Go_Text.gd" id="5_dv5hg"]
+[ext_resource type="Script" path="res://Scripts/Feedback/Time_Left_Display.gd" id="6_78a2x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0n2s0"]
 font = ExtResource("4_a5q6f")
@@ -58,6 +59,16 @@ _data = {
 "RESET": SubResource("Animation_p5a21")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_3flib"]
+font = ExtResource("4_a5q6f")
+font_size = 45
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_ph6nv"]
+offsets = PackedFloat32Array(0, 0.480392, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.724639, 0.680731, 3.85046e-07, 1, 1, 1, 1, 1)
+
 [node name="UI" type="Control"]
 layout_mode = 3
 anchor_left = -0.498
@@ -94,10 +105,10 @@ vertical_alignment = 2
 
 [node name="Go!" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1018.79
-offset_top = 192.106
-offset_right = 1194.79
-offset_bottom = 238.106
+offset_left = 1017.98
+offset_top = 192.508
+offset_right = 1193.98
+offset_bottom = 238.508
 text = "GO!!"
 label_settings = SubResource("LabelSettings_nblqg")
 script = ExtResource("5_dv5hg")
@@ -107,3 +118,14 @@ libraries = {
 "": SubResource("AnimationLibrary_sk3ad")
 }
 autoplay = "Go!"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 633.44
+offset_top = 75.28
+offset_right = 721.44
+offset_bottom = 121.28
+text = "90"
+label_settings = SubResource("LabelSettings_3flib")
+script = ExtResource("6_78a2x")
+color_gradient = SubResource("Gradient_ph6nv")
